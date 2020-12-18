@@ -5,7 +5,7 @@
 # Site
 title: 小辣鸡's Blog
 subtitle: ''
-description: 'Nothing lasts forever'
+description: 'Coding Changes the World'
 keywords:
 author: Small Laji
 language: en
@@ -96,22 +96,6 @@ ignore:
 #theme: Anatole
 theme: next
 
-# Deploymenthexo he
-deploy:
-  ##github-pages
-  type: git
-  repo: 
-    github: https://github.com/weixusheng/weixusheng.github.io.git
-    gitee: https://gitee.com/tronwei/tronwei.git
-  branch: master
-  ##type: qcloud-cos
-  ##cosRegion: ap-beijing
-  ##cosSecretId: AKIDkDPK2TnaHFwLso9oP2CY3IY0B4j7p3dz
-  ##cosSecretKey: rRp0vZw2sUorgmdDVWGjuTaT6SaR2LYV
-  ##cosBucket: tronwei
-  ##cosAppid: 1254020584
-  ##remotePath: 
-
 archive_generator:
   per_page: 0  
   yearly: false
@@ -142,10 +126,67 @@ search:
   format: html
   limit: 10000
   
+algolia:
+  applicationID: 'VD9S1KXIQK'
+  apiKey: 'bff879db6fbda15baf96648269d8b36f'
+  adminApiKey: 'cff995881378c8191b63f91b15d73dd1'
+  indexName: 'tronwei'
+  chunkSize: 5000
+  
 #字数和阅读时间统计插件
 symbols_count_time:
   symbols: true
   time: true
   total_symbols: true
   total_time: true
+  
+# 百度收录
+baidusitemap:
+    path: baidusitemap.xml
 
+# 百度主动推送
+baidu_url_submit:
+  count: 5 ## 提交最新的 5 个链接
+  host: tronwei.top ## 注意修改为你在百度站长平台中注册的域名
+  token: Kh6e2kyfgFXlCTNP ## 注意修改为你的秘钥
+  path: baidu_urls.txt ## 文本文档的地址  新链接会保存在此文本文档里
+
+# Deploymenthexo here
+deploy:
+  ##github-pages
+  - type: git
+    repo:
+     github: https://github.com/weixusheng/weixusheng.github.io.git
+     gitee: https://gitee.com/tronwei/tronwei.git
+     coding: https://e.coding.net/tronwei/tronwei/tronwei.git
+    branch: master
+  ##type: qcloud-cos
+  ##cosRegion: ap-beijing
+  ##cosSecretId: AKIDkDPK2TnaHFwLso9oP2CY3IY0B4j7p3dz
+  ##cosSecretKey: rRp0vZw2sUorgmdDVWGjuTaT6SaR2LYV
+  ##cosBucket: tronwei
+  ##cosAppid: 1254020584
+  ##remotePath:
+  - type: baidu_url_submitter
+  
+## markdown 渲染引擎配置，默认是hexo-renderer-marked (emoji)
+markdown:
+  render:
+    html: true
+    xhtmlOut: false
+    breaks: true
+    linkify: true
+    typographer: true
+    quotes: '“”‘’'
+  plugins:
+    - markdown-it-footnote
+    - markdown-it-sup
+    - markdown-it-sub
+    - markdown-it-abbr
+    - markdown-it-emoji
+  anchors:
+    level: 1
+    collisionSuffix: 'v'
+    permalink: true
+    permalinkClass: header-anchor
+    permalinkSymbol: ⭐
